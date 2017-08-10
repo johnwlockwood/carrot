@@ -1,4 +1,4 @@
-# Modern Brontend (ES6 and React), and Python Backend Recipe 
+# Modern Frontend (ES6 and React), and Python Backend Recipe 
 
 # Recipe for this example
 
