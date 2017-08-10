@@ -81,6 +81,7 @@ Run Flask dev server:
 
 Run react app:
 
+    cd greens
     yarn start
 
 [Visit the nginx server localhost:8080](http://localhost:8080/) You will be served the frontend
