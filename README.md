@@ -1,4 +1,7 @@
-# Modern Frontend (ES6 and React), and Python Backend Recipe 
+# Carrot: to draw Python users to ES6 Javascript
+![Image of Carrot](./cyberscooty-carrot-300px.png)
+
+## Modern Frontend (ES6 and React), and Python Backend Recipe 
 
 # Recipe for this example
 
