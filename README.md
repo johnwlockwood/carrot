@@ -96,3 +96,6 @@ Both are from the same host and port origin and to keep frontend fetches in the 
 
 https://facebook.github.io/react/docs/state-and-lifecycle.html
 
+### Add a button to manually fetch
+
+Try changing the python hello.py response to something other than "Hello World!" and hit the button.

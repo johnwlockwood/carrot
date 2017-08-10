@@ -29,6 +29,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <p><button onClick={(e) => this.fetchHello()}>fetch data from python</button></p>
       </div>
     );
   }
