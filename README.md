@@ -75,3 +75,16 @@ Launch nginx with config
 
     nginx -c $(pwd)/nginx.conf
 
+Run Flask dev server:
+
+    FLASK_APP=root/app/hello.py flask run
+
+Run react app:
+
+    yarn start
+
+[Visit the nginx server localhost:8080](http://localhost:8080/) You will be served the frontend
+
+[Load the flask app backend url](http://localhost:8080/u)
+
+Both are from the same host and port origin and to keep frontend fetches in the same-origin browser security policy.
