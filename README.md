@@ -89,3 +89,10 @@ Run react app:
 [Load the flask app backend url](http://localhost:8080/u)
 
 Both are from the same host and port origin and to keep frontend fetches in the same-origin browser security policy.
+
+# Fetch from python
+
+## Add some state and fetch when app component mounts
+
+https://facebook.github.io/react/docs/state-and-lifecycle.html
+
