@@ -5,6 +5,13 @@
 
 # Recipe for this example
 
+## Prerequisites
+
+ * git
+ * node
+ * pyenv-virtualenv
+ * nginx
+
 ## Intialize repo
 
 # Frontend

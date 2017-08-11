@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import carrot from './cyberscooty-carrot-300px.png'
+import Widget from './Widget'
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {body: ""};
+    this.state = {body: "", randomNumber: ""};
   }
   fetchHello() {
-    const me = this
     fetch('/u/')
     .then(function(response) {
       return response.text()
     }).then(function(body) {
-      me.setState({...me.state, body})
+      this.setState({...this.state, body})
+    }.bind(this))
+  }
+  fetchRandomNumber() {
+    fetch('/u/rn')
+    .then(function(response) {
+      return response.text()
+    }).then((randomNumber) => {
+      this.setState({...this.state, randomNumber})
     })
   }
   componentDidMount() {
@@ -30,6 +39,9 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <p><button onClick={(e) => this.fetchHello()}>fetch data from python</button></p>
+
+        <Widget {...this.state} fetchRandomNumber={this.fetchRandomNumber.bind(this)} />
+        
       </div>
     );
   }
