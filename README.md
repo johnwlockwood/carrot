@@ -5,6 +5,13 @@
 
 # Recipe for this example
 
+## Prerequisites
+
+ * git
+ * node
+ * pyenv-virtualenv
+ * nginx
+
 ## Intialize repo
 
 # Frontend
@@ -102,3 +109,9 @@ https://facebook.github.io/react/docs/state-and-lifecycle.html
 ### Add a button to manually fetch
 
 Try changing the python hello.py response to something other than "Hello World!" and hit the button.
+
+## Add React Router 4 example
+
+    yarn add react-router-dom
+
+Then copy/paste an example from the [react-router site](https://reacttraining.com/react-router/web/example/basic)
