@@ -13,7 +13,10 @@ import Widget from './Widget'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {body: "", randomNumber: ""};
+    this.state = {
+      body: "", 
+      randomNumber: ""
+    };
   }
   fetchHello() {
     fetch('/u/')
@@ -39,19 +42,20 @@ class App extends Component {
         <div className="App">
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h2>Welcome to React. {this.state.body}</h2>
+            <h2>San Francisco, Welcome to React. {this.state.body}</h2>
           </div>
+          <ul className="App-nav">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/topics">Topics</Link></li>
+          </ul>
           <p className="App-intro">
             To get started, edit <code>src/App.js</code> and save to reload.
           </p>
           <p><button onClick={(e) => this.fetchHello()}>fetch data from python</button></p>
 
           <Widget {...this.state} fetchRandomNumber={this.fetchRandomNumber.bind(this)} />
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/topics">Topics</Link></li>
-          </ul>
+
 
           <hr/>
 
@@ -74,7 +78,7 @@ const Home = () => (
 const Topics = ({ match }) => (
   <div>
     <h2>Topics</h2>
-    <ul>
+    <ul className="App-nav">
       <li>
         <Link to={`${match.url}/rendering`}>
           Rendering with React

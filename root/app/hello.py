@@ -6,7 +6,7 @@ import random
 @app.route("/")
 def hello():
     """Basic hello world :)"""
-    return "Hello World!"
+    return "Hello PyBay!"
 
 @app.route("/rn")
 def random_number():
