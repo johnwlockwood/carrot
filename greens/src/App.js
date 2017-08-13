@@ -9,33 +9,64 @@ import './App.css';
 import carrot from './cyberscooty-carrot-300px.png'
 import Widget from './Widget'
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      body: "", 
-      randomNumber: ""
+      body: "",
+      randomNumber: "",
+      loggedIn: false,
     };
   }
+  fetchUser() {
+    fetch('/u/login', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Cache': 'no-cache'
+      },
+      credentials: 'same-origin'
+    })
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function ({loggedIn, username}) {
+        this.setState({
+          ...this.state,
+          loggedIn,
+          username
+        })
+      }.bind(this))
+  }
   fetchHello() {
-    fetch('/u/')
-    .then(function(response) {
-      return response.text()
-    }).then(function(body) {
-      this.setState({...this.state, body})
-    }.bind(this))
+    fetch('/u/', {
+      credentials: 'same-origin'
+    })
+      .then(function (response) {
+        return response.text()
+      })
+      .then(function (body) {
+        this.setState({
+          ...this.state,
+          body
+        })
+      }.bind(this))
   }
   fetchRandomNumber() {
-    fetch('/u/rn')
-    .then(function(response) {
-      return response.text()
-    }).then((randomNumber) => {
-      this.setState({...this.state, randomNumber})
+    fetch('/u/rn', {
+      credentials: 'same-origin'
     })
+      .then(function (response) {
+        return response.text()
+      })
+      .then((randomNumber) => {
+        this.setState({
+          ...this.state,
+          randomNumber
+        })
+      })
   }
-  componentDidMount() {
-  }
+  componentDidMount() {}
   render() {
     return (
       <Router>
@@ -52,17 +83,31 @@ class App extends Component {
           <p className="App-intro">
             To get started, edit <code>src/App.js</code> and save to reload.
           </p>
-          <p><button onClick={(e) => this.fetchHello()}>fetch data from python</button></p>
+          <p>
+          {(!this.state.loggedIn && (<button onClick={(e) => this.fetchUser()}>Login</button>)) || (<h3>{this.state.username}</h3>)}
+          </p>
+          <p>
+            <button onClick={(e) => this.fetchHello()}>fetch data from python</button>
+          </p>
 
-          <Widget {...this.state} fetchRandomNumber={this.fetchRandomNumber.bind(this)} />
+          <Widget
+            {...this.state}
+            fetchRandomNumber={this
+              .fetchRandomNumber
+              .bind(this)} />
 
+          <hr />
 
-          <hr/>
-
-          <Route exact path="/" component={Home}/>
-          <Route path="/about" render={() => <Widget {...this.state} fetchRandomNumber={this.fetchRandomNumber.bind(this)} />} />
-          <Route path="/topics" component={Topics}/>
-        </div>
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/about"
+            render={() => <Widget
+              {...this.state}
+              fetchRandomNumber={this
+                .fetchRandomNumber
+                .bind(this)} />} />
+          <Route path="/topics" component={Topics} />
+  </div>
       </Router>
     );
   }
